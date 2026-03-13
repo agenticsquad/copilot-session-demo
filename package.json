@@ -1,0 +1,29 @@
+{
+  "name": "sessionghcopilot",
+  "version": "1.0.0",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"No tests configured yet\"",
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agenticsquad/copilot-session-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/agenticsquad/copilot-session-demo/issues"
+  },
+  "homepage": "https://github.com/agenticsquad/copilot-session-demo#readme",
+  "description": "Demo inventory management app for Equipo Atlas.",
+  "main": "src/app.js",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}

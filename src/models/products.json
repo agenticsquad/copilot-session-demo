@@ -1,0 +1,79 @@
+[
+  {
+    "id": "prd-1001",
+    "name": "Laptop Atlas 14",
+    "category": "Electronics",
+    "sku": "ELEC-LAP-014",
+    "quantity": 12,
+    "minStock": 5,
+    "price": 18500,
+    "createdAt": "2026-03-01T09:00:00.000Z",
+    "updatedAt": "2026-03-01T09:00:00.000Z"
+  },
+  {
+    "id": "prd-1002",
+    "name": "Monitor Curvo 27",
+    "category": "Electronics",
+    "sku": "ELEC-MON-027",
+    "quantity": 7,
+    "minStock": 3,
+    "price": 6400,
+    "createdAt": "2026-03-01T09:05:00.000Z",
+    "updatedAt": "2026-03-01T09:05:00.000Z"
+  },
+  {
+    "id": "prd-1003",
+    "name": "Mouse Inalámbrico Atlas",
+    "category": "Electronics",
+    "sku": "ELEC-MOU-001",
+    "quantity": 25,
+    "minStock": 10,
+    "price": 480,
+    "createdAt": "2026-03-01T09:10:00.000Z",
+    "updatedAt": "2026-03-01T09:10:00.000Z"
+  },
+  {
+    "id": "prd-2001",
+    "name": "Cuaderno Ejecutivo A5",
+    "category": "Office Supplies",
+    "sku": "OFF-NBK-A5",
+    "quantity": 40,
+    "minStock": 15,
+    "price": 95,
+    "createdAt": "2026-03-01T09:15:00.000Z",
+    "updatedAt": "2026-03-01T09:15:00.000Z"
+  },
+  {
+    "id": "prd-2002",
+    "name": "Paquete de Plumones",
+    "category": "Office Supplies",
+    "sku": "OFF-MRK-010",
+    "quantity": 18,
+    "minStock": 8,
+    "price": 210,
+    "createdAt": "2026-03-01T09:20:00.000Z",
+    "updatedAt": "2026-03-01T09:20:00.000Z"
+  },
+  {
+    "id": "prd-3001",
+    "name": "Escritorio Ajustable",
+    "category": "Furniture",
+    "sku": "FUR-DSK-001",
+    "quantity": 4,
+    "minStock": 2,
+    "price": 9200,
+    "createdAt": "2026-03-01T09:25:00.000Z",
+    "updatedAt": "2026-03-01T09:25:00.000Z"
+  },
+  {
+    "id": "prd-3002",
+    "name": "Silla Ergonómica",
+    "category": "Furniture",
+    "sku": "FUR-CHR-001",
+    "quantity": 9,
+    "minStock": 4,
+    "price": 5100,
+    "createdAt": "2026-03-01T09:30:00.000Z",
+    "updatedAt": "2026-03-01T09:30:00.000Z"
+  }
+]

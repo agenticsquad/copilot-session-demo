@@ -14,4 +14,7 @@ Rusty designed the complete session structure: 7-section narrative arc (~63 min)
 
 ## Learnings
 
+- 2026-03-13: El scaffold de Equipo Atlas funciona mejor como app Express mínima con datos semilla y una UI HTML simple; eso deja el foco del demo en los agentes, no en el framework.
+- 2026-03-13: Mantener callbacks y acceso directo a `products.json` crea una deuda técnica útil y segura para demos de modernización sin complicar el setup.
+
 <!-- Append new learnings below. Each entry is something lasting about the project. -->

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipo Atlas | Inventario</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f3f4f6; color: #111827; }
+    header { background: #111827; color: white; padding: 24px; }
+    main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    .toolbar, .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08); margin-bottom: 20px; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+    .filters { display: flex; flex-wrap: wrap; gap: 12px; }
+    select, button, a { font: inherit; }
+    select, button { padding: 10px 14px; border-radius: 8px; border: 1px solid #d1d5db; }
+    button, .link-button { background: #2563eb; color: white; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+    button.secondary { background: #e5e7eb; color: #111827; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e5e7eb; }
+    th { color: #4b5563; font-size: 0.9rem; }
+    .empty { padding: 24px 0; color: #6b7280; }
+    .actions { display: flex; gap: 8px; }
+    .status { margin-top: 12px; color: #4b5563; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Equipo Atlas</h1>
+    <p>Inventario demo para sesiones de GitHub Copilot.</p>
+  </header>
+  <main>
+    <section class="toolbar">
+      <div>
+        <h2 style="margin: 0 0 4px;">Productos</h2>
+        <p style="margin: 0; color: #6b7280;">El filtro por categoría todavía no funciona: perfecto para el backlog en vivo.</p>
+      </div>
+      <a class="link-button" href="/product-form.html">Agregar producto</a>
+    </section>
+
+    <section class="card">
+      <div class="filters">
+        <select id="categoryFilter">
+          <option value="">Todas las categorías</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Office Supplies">Office Supplies</option>
+          <option value="Furniture">Furniture</option>
+        </select>
+        <button id="applyFilterButton" type="button">Aplicar filtro</button>
+        <button id="resetFilterButton" type="button" class="secondary">Limpiar</button>
+      </div>
+      <p class="status" id="statusMessage">Cargando productos...</p>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>SKU</th>
+              <th>Cantidad</th>
+              <th>Stock mínimo</th>
+              <th>Precio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const productsTableBody = document.getElementById('productsTableBody');
+    const statusMessage = document.getElementById('statusMessage');
+    const categoryFilter = document.getElementById('categoryFilter');
+
+    async function loadProducts() {
+      statusMessage.textContent = 'Cargando productos...';
+
+      const selectedCategory = categoryFilter.value;
+      const query = selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}` : '';
+      const response = await fetch(`/api/products${query}`);
+      const result = await response.json();
+      const products = result.data || [];
+
+      productsTableBody.innerHTML = '';
+      if (!products.length) {
+        productsTableBody.innerHTML = '<tr><td colspan="7" class="empty">No hay productos registrados.</td></tr>';
+        statusMessage.textContent = 'Sin resultados.';
+        return;
+      }
+
+      products.forEach((product) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${product.name}</td>
+          <td>${product.category}</td>
+          <td>${product.sku}</td>
+          <td>${product.quantity}</td>
+          <td>${product.minStock}</td>
+          <td>$${Number(product.price).toFixed(2)}</td>
+          <td>
+            <div class="actions">
+              <a class="link-button" href="/product-form.html?id=${product.id}">Editar</a>
+              <button type="button" data-product-id="${product.id}" class="secondary">Eliminar</button>
+            </div>
+          </td>
+        `;
+        productsTableBody.appendChild(row);
+      });
+
+      statusMessage.textContent = `${products.length} productos cargados.`;
+    }
+
+    async function deleteProduct(productId) {
+      const confirmed = window.confirm('¿Eliminar este producto del inventario?');
+      if (!confirmed) {
+        return;
+      }
+
+      await fetch(`/api/products/${productId}`, { method: 'DELETE' });
+      loadProducts();
+    }
+
+    document.getElementById('applyFilterButton').addEventListener('click', loadProducts);
+    document.getElementById('resetFilterButton').addEventListener('click', () => {
+      categoryFilter.value = '';
+      loadProducts();
+    });
+
+    productsTableBody.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target.matches('button[data-product-id]')) {
+        deleteProduct(target.getAttribute('data-product-id'));
+      }
+    });
+
+    loadProducts();
+  </script>
+</body>
+</html>
