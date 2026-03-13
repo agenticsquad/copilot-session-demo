@@ -6,6 +6,12 @@
 - **Deliverables:** PowerPoint slides, GitHub repo with user stories, demo environment, session script/guide
 - **Created:** 2026-03-13
 
+## Session Architecture (2026-03-13)
+
+Rusty designed the complete session structure: 7-section narrative arc (~63 min) titled "GitHub Copilot: De la Sobrecarga al Superpoder". Key decision: every demo starts from a GitHub Issue in the backlog (Equipo Atlas's work queue). 10 user stories created across demo categories. Your task: design visual slides following the 7-section breakdown. Reference `docs/session-structure.md` for detailed content and timing per section.
+
+**See:** `docs/session-structure.md`, `.squad/decisions.md`
+
 ## Learnings
 
 <!-- Append new learnings below. Each entry is something lasting about the project. -->
