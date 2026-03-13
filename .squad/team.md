@@ -28,3 +28,9 @@
 - **Deliverables:** PowerPoint (corporate GitHub branding), GitHub repo with user stories, demo environment, session script/guide
 - **Stack:** PowerPoint, GitHub, Markdown, demo application, GitHub Copilot
 - **Created:** 2026-03-13
+
+## Issue Source
+
+- **Repository:** agenticsquad/copilot-session-demo
+- **Connected:** 2026-03-13
+- **URL:** https://github.com/agenticsquad/copilot-session-demo
